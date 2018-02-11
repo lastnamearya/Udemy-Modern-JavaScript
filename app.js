@@ -1,27 +1,29 @@
-// var, let, const
+// Primitive 
 
-var name = 'John Doe';
-console.log(name);
+// Strings
+const name = 'John Doe';
+// Number
+const age = 45;
+// Boolean
+const hasKids = true;
+// Null
+const car = null;
+// undefined
+let test;
+// Symbol
+const sym = Symbol();
 
-name = 'Steve Smith';
-console.log(name);
+// Reference Types - Objects
+// Array
+const hobbies = ['movies', 'music'];
+// Object literal
+const address = {
+  city: 'Boston',
+  state: 'MA'
+}
 
-// Initializing a variable
-var greeting;
-console.log(greeting);
-greeting = 'hello';
-console.log(greeting);
+// Date 
+const today = new Date();
+console.log(today);
 
-// Variables Naming 
-
-var firstName = 'John'; // Camel Case
-var first_name = 'Sara'; // Underscore
-var FirstName = 'Tom'; // Pascal Case
-var firstname;  // lowercase i.e not recommended
-
-// const
-
-const numbers = [1,2,3,4,5];
-numbers.push(6);
-
-console.log(numbers);
+console.log(typeof today);
