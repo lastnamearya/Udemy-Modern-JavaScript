@@ -1,29 +1,33 @@
-// Primitive 
+let val;
 
-// Strings
-const name = 'John Doe';
-// Number
-const age = 45;
-// Boolean
-const hasKids = true;
-// Null
-const car = null;
-// undefined
-let test;
-// Symbol
-const sym = Symbol();
+// Number to String
+val = String(555);
+val = String(4+4);
 
-// Reference Types - Objects
-// Array
-const hobbies = ['movies', 'music'];
-// Object literal
-const address = {
-  city: 'Boston',
-  state: 'MA'
-}
+// Bool to String
+val = String(true);
 
-// Date 
-const today = new Date();
-console.log(today);
+// Date to String
+val = String(new Date());
 
-console.log(typeof today);
+// Array to String
+val = String([1,2,3,4]);
+
+// toString Method
+val = (5).toString();
+val = (true).toString();
+
+// String to Number
+val = Number('5');
+val = Number(true);
+val = Number(false);
+val = Number(null);
+val = Number('hello');
+val = Number(undefined);
+
+
+// Output
+console.log(val);
+console.log(typeof val);
+// console.log(val.length);
+console.log(val.toFixed(2));
