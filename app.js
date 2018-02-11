@@ -1,28 +1,27 @@
-// Log to console
-console.log("hello world");
-console.log(123);
-console.log(true);
+// var, let, const
 
-var greeting = 'hello';
+var name = 'John Doe';
+console.log(name);
+
+name = 'Steve Smith';
+console.log(name);
+
+// Initializing a variable
+var greeting;
 console.log(greeting);
-console.log([1,2,3,4]);
-console.log({a: 1, b: 2});
+greeting = 'hello';
+console.log(greeting);
 
-// Logs Objects in a table manner
-console.table({a: 1, b: 2});
+// Variables Naming 
 
-// Shows error in console
-console.error('This is some error');
-console.clear();
-console.warn('This is a Warning!');
+var firstName = 'John'; // Camel Case
+var first_name = 'Sara'; // Underscore
+var FirstName = 'Tom'; // Pascal Case
+var firstname;  // lowercase i.e not recommended
 
-// Timer, used to check runtime performance of our programs
-console.time('Hello');
-  console.log("hello world");
-  console.log("hello world");
-  console.log("hello world");
-  console.log("hello world");
-  console.log("hello world");
-  console.log("hello world");
-  console.log("hello world");
-console.timeEnd('Hello');
+// const
+
+const numbers = [1,2,3,4,5];
+numbers.push(6);
+
+console.log(numbers);
