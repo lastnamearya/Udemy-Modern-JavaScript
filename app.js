@@ -1,67 +1,36 @@
-// Create some arrays
-const numbers = [43, 56, 33, 23, 44, 36, 5];
-const numbers2 = new Array(22, 45, 76, 54);
-const fruit = ['Apple', 'Banana', 'Orange', 'Pear'];
-const mixed = [22, 'Hello', true, undefined, null, {a:1, b:1}, new Date()];
+ const person = {
+   firstName: 'Steve',
+   lastName: 'Smith',
+   age: 30,
+   email: 'steve@aol.com',
+   hobbies: ['music', 'sports'],
+   address: {
+     city: 'Miami',
+     state: 'FL'
+   },
+   getBirthYear: function() {
+     return 2018 - this.age;
+   }
+ }
 
-let val;
+ let val;
 
-// Get array length
-val = numbers.length;
-// Check if is array
-val = Array.isArray(numbers);
-// Get single value
-val = numbers[3];
-val = numbers[0];
-// Insert into Arrays
-numbers[2] = 100;
-// Find index of a value
-val = numbers.indexOf(36);
+ val = person.firstName;
+ val = person['lastName'];
+ val = person.age;
+ val = person.hobbies[1];
+ val = person.address.state;
+ val = person.address['city'];
+ val = person.getBirthYear();
 
-// Mutating Arrays
+ console.log(val);
 
-// Add one to end
-numbers.push(250);
+ const people = [ 
+   {name: 'John', age: 30},
+   {name: 'Mike', age: 23},
+   {name: 'Nancy', age: 40}
+ ];
 
-// Add one to front
-numbers.unshift(120);
-
- // Take one from end
- numbers.pop();
-
- // Take from front
- numbers.shift();  
-
- // Splice Values
- numbers.splice(1, 3);
-
- // Reverse the array
- numbers.reverse();
-
- // Concate Arrays
- val = numbers.concat(numbers2);
-
-// Sorting Arrays
-val = fruit.sort();
-val = numbers.sort();
-
-// Callback: use the compare function
-val = numbers.sort(function(x,y){
-  return x - y;
-});
-
-// Reverse Sort
-val = numbers.sort(function(x, y) {
-  return y - x;
-});
-
-// Find
-function under50(num) {
-  return num < 50;
-}
-
-val = numbers.find(under50);
-
-
-console.log(numbers);
-console.log(val);
+ for(let i = 0; i < people.length; i++) {
+   console.log(people[i].name);
+ }
