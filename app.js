@@ -1,33 +1,26 @@
+const num1 = 100;
+const num2 = 50;
+
 let val;
 
-// Number to String
-val = String(555);
-val = String(4+4);
+// Math object
 
-// Bool to String
-val = String(true);
+val = Math.PI;
+val = Math.E;
+val = Math.round(2.4);
+val = Math.ceil(2.4);
+val = Math.floor(2.4);
+val = Math.sqrt(64);
+val = Math.abs(-3);
+val = Math.pow(8, 2);
+val = Math.min(1,2,3,44,55,66,-2);
+val = Math.max(1,2,3,44,55,66,-2);
+val = Math.random();  
 
-// Date to String
-val = String(new Date());
-
-// Array to String
-val = String([1,2,3,4]);
-
-// toString Method
-val = (5).toString();
-val = (true).toString();
-
-// String to Number
-val = Number('5');
-val = Number(true);
-val = Number(false);
-val = Number(null);
-val = Number('hello');
-val = Number(undefined);
+// Random No between 1 & 20
+val = Math.floor(Math.random() * 20 + 1);
 
 
-// Output
+
 console.log(val);
-console.log(typeof val);
-// console.log(val.length);
-console.log(val.toFixed(2));
+
