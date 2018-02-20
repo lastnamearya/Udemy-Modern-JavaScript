@@ -1,76 +1,70 @@
-// For Loop
+// // Window Methods / Objects / Properties
 
-for(let i = 0; i < 10; i++){
-  //console.log('Number ' + i);
-  if(i === 2){
-    console.log("2 is my favorite number");
-    continue;
-  }
+// console.log(123);
 
-  if(i === 5){
-    console.log("Stop the loop");
-    break;
-  }
+// window.console.log(123);
 
-  console.log("Number " + i);
-}
+// // Alert
 
-// While Loop
+// window.alert('hello Peter Thiel');
 
-let i = 0;
+// // Prompt
+// const input = prompt();
+// alert(input);
 
-while(i < 10){
-  console.log('Number ' + i);
-  i++;
-} 
+// // Confirm
+// if(confirm('Are you sure')){
+//   console.log('YES');
+// } else {
+//   console.log('No');
+// }
 
-// Do While
+let val;
 
-let j = 0;
+// Outer Height and Width
 
-do {
-  console.log('Number ' + j);
-  j++;
-}
+val = window.outerHeight;
+val = window.outerWidth;
 
-while(j < 10);
+// Inner Height and Width
 
-const cars = ['Ford', 'Chevy', 'Honda', 'Toyota'];
+val = window.innerHeight;
+val = window.innerWidth;
 
-for(let i = 0; i < cars.length; i++) {
-  console.log(cars[i]);
-}
+// Scroll Points
 
-// FOREACH Loop
-cars.forEach(function(car, index, array){
-  console.log(`${index} : ${car}`);
-  console.log(array);
-});
+val = window.scrollY;
+val = window.scrollX;
 
- // Map  
- const users = [
-   {id: 1, name: "John"},
-   {id: 2, name: 'Sara'},
-   {id: 3, name: 'Karen'},
-   {id: 4, name: 'Steve'}
- ];
+// Location Object
 
- const ids = users.map(function(user){
-   return user.id;
- });
+val = window.location;
+val = window.location.hostname; 
+val = window.location.port;
+val = window.location.href;
+val = window.location.search;
 
- console.log(ids);
+// // Redirect
 
- // for in loop
- 
- const user = {
-   firstName: 'John',
-   lastName: 'Doe',
-   age: 40
- }
+// window.location.href = 'https://google.com';
 
- for(let x in user){
-   console.log(`${x} : ${user[x]}`);
- }
+// // Reload
 
+// window.location.reload();
 
+// History Object
+
+window.history.go(-2);
+val = window.history.length;
+
+// Navigator Object
+
+val = window.navigator;
+val = window.navigator.appName;
+val = window.navigator.appVersion;
+val = window.navigator.userAgent;
+val = window.navigator.platform;
+val = window.navigator.vendor;
+val = window.navigator.language;
+
+console.log(val); 
