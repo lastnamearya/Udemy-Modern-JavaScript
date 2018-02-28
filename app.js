@@ -1,41 +1,34 @@
- // ES6 Classes
- class Person {
-   constructor(firstName, lastName, dob) {
-     this.firstName = firstName;
-     this.lastName = lastName;
-     this.birthday = new Date(dob);
+// Sub classes: Inheritance in ES6 Classes
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  greeting() {
+    return `Hello there ${this.firstName} ${this.lastName}`;
+  }
+}
+
+class Customer extends Person {
+   constructor(firstName, lastName, phone, membership) {
+     // In React.js it's widely used, it calls the parent class constructor
+     super(firstName, lastName);
+
+      this.phone = phone;
+      this.membership = membership;
    }
 
-   greeting() {
-     return `Hello there ${this.firstName} ${this.lastName}`; 
+   // We can also create class specific method in the extneded sub-class
+   static getMembershipCost() {
+     return 500;
    }
 
-   calculateAge() {
-     const diff = Date.now() - this.birthday.getTime();
-     const ageDate = new Date(diff);
-     return Math.abs(ageDate.getUTCFullYear() - 1970);
-   }
+}
 
-   getsMarried(newLastName) {
-     this.lastName = newLastName;
-   }
+const john = new Customer('John', 'Doe', '555-555-555', 'Standard');
 
-  // Static Methods, we can't use static methods on the object instances that we create using the ES6 classes or object constructor
-  // If you're not using something like this keyword in your methods then static method is the best way to do the task
-   static addNumbers(x, y) {
-     return x + y;
-   }
+console.log(john);
+console.log(john.greeting());
 
- }
-
-const mary = new Person('Mary', 'Williams', '11-13-1980');
-
-console.log(mary);
-
-mary.getsMarried('Thompson');
-
-console.log(mary.greeting());
-
-console.log(mary.calculateAge());
-
-console.log(Person.addNumbers(1,2));
+console.log(Customer.getMembershipCost());
