@@ -1,40 +1,28 @@
-let val;
+// Person  Constructor
+function Person(name, dob) {
+  this.name = name;
 
-val = document;
-val = document.all;
-val = document.all[3];
-val = document.all.length;
-val = document.head;
-val = document.body;
-val = document.doctype;
-val = document.domain;
-val = document.URL;
-val = document.characterSet;
-val = document.contentType;
 
-val = document.forms;
+  // this.age = age;
 
-// Select First Form
-val = document.forms[0];
+  this.birthday = new Date(dob);
+  this.calculateAge = function(){
+    const diff = Date.now() - this.birthday.getTime();
+    const ageDate = new Date(diff);
+    // Here in Math Object(constructor), we don't need to use new keyword 
+    // Don't worry about this formula of - 1970, it's default
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+  }
+}
 
-// Get Stuff from Forms
-val = document.forms[0].id;
+// // This will give us window object
+// console.log(this);
+// this.alert(1);
 
-// Forms have methods like get and post
-val = document.forms[0].method;
+// const brad = new Person('Brad', 36);
+// const john = new Person('John', 30);
 
-// *********************************************************************** //
+// console.log(john.age);
 
-// We can find links in our document
-val = document.links;
-val = document.links[0];
-val = document.links[0].id;
-val = document.links[0].className;
-val = document.links[0].classList[0];
-
-val = document.images;
-
-val = document.scripts;
-val = document.scripts[2].getAttribute('src');
-
-console.log(val);
+const brad = new Person('Brad', '9-10-1981');
+console.log(brad.calculateAge());
