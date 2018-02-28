@@ -1,58 +1,51 @@
-// All these constructor methods will slow your scipt execution time, ignore them as possible but you need to keep them in your mind.
+// Constructor Name always start with a Capital Character / Name
 
-// String
+// Person constructor
 
-// Primitive Data Type
-const name1 = 'Jeff';
-
-// Reference ~ Object Constructor
-const name2 = new String('Jeff');
-
-// // We can add properties to reference data types (string in this case) whenever we want to
-// name2.foo = 'bar';
-// console.log(name2);
-
-console.log(typeof name2);
-
-// We can create any data in primitive and reference form, whatever we want to
-const num1 = 5;
-const num2 = new Number(5);
-
-console.log(num1);
-console.log(typeof(num2));
-
-// Boolean
-const bool1 = true;
-const bool2 = new Boolean(true);
-
-console.log(typeof bool2);
-
-// Functions
-const getSum1 = function(x, y){
-  return x + y;
+function Person(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
 }
 
-// Constructor Function
-const getSum2 = new Function('x','y', 'return x + y');
+// Greeting prototype method
+Person.prototype.greeting = function() {
+  return `Hello there ${this.firstName} ${this.lastName}`;
+}
 
-console.log(getSum2(1,1));
+const person1 = new Person('John', 'Doe');
 
-// Object Constructor
-const john1 = {name: "John"};
-const john2 = new Object({name: "John"});
-console.log(john2);
+console.log(person1.greeting());
 
-// Arrays
-const arr1 = [1,2,3,4];
-const arr2 = new Array(1,2,3,4);
+// Customer constructor
+function Customer(firstName, lastName, phone, membership) {
+  // call() is a function that allow us to call another function from somewhere else in the current context
 
-console.log(arr2);
+  Person.call(this, firstName, lastName);
 
-// Regular Expressions Constructor
-// In this expression we're looking for a word character that appears more than one time.
-const re1 = /\w+/;
-// When we use RegExp then we need to escape our backslash character uing one more \
-const re2 = new RegExp('\\w+');
+  this.phone = phone;
+  this.membership = membership;
+}
 
-console.log(re1);
-console.log(re2);
+// ***************************************************************************************** //
+
+// Inherit Person Prototype Methods
+Customer.prototype = Object.create(Person.prototype);
+
+// Make customer.prototype return Customer()
+Customer.prototype.constructor = Customer;
+
+// ***************************************************************************************** //
+
+
+// Create a customer
+const customer1 = new Customer('Tom', 'Smith', '555-555-555', 'Standard');
+
+console.log(customer1);
+
+// Override Prototype Constructor
+Customer.prototype.greeting = function(){
+  return `Hello there ${this.firstName} ${this.lastName} welcome! to our company`;
+}
+
+// Without inheriting prototype, it'll not work. By default js will not inherit any prototype of other constructors
+console.log(customer1.greeting());
