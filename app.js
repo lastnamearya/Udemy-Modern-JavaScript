@@ -15,7 +15,8 @@ function loadData() {
   // onload is pretty new, before that we do onreadystatechange, then we check to make sure that readystate is at 4, now it will check to the readystate that must be equal to 4
   xhr.onload = function() {
    if(this.status === 200) {
-    console.log(this.responseText);
+    // console.log(this.responseText);
+    document.getElementById('output').innerHTML = `<h1>${this.responseText}</h1>`;
    } 
   }
 
