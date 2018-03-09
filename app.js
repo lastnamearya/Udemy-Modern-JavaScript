@@ -1,43 +1,70 @@
-document.getElementById('button').addEventListener('click', loadData);
+document.getElementById('button1').addEventListener('click', loadCustomer);
 
-function loadData() {
+document.getElementById('button2').addEventListener('click', loadCustomers);
 
-  // Create an XHR Object
+// ************************************************************************************** //
+
+
+function loadCustomer(e) {
   const xhr = new XMLHttpRequest();
 
-  // Optional used for spinners / loaders ( When we want to display something while it's loading)
-  xhr.onprogress = function(){
-    console.log("READYSTATE", xhr.readyState);    // 3 i.e Processing Request
-  }
+  // true stand for asynchronous
+  xhr.open('GET', 'customer.json', true);
 
-  // Create the callback
-
-  // onload is pretty new, before that we do onreadystatechange, then we check to make sure that readystate is at 4, now it will check to the readystate that must be equal to 4
   xhr.onload = function() {
-   if(this.status === 200) {
-    // console.log(this.responseText);
-    document.getElementById('output').innerHTML = `<h1>${this.responseText}</h1>`;
-   } 
+    if(this.status === 200) {
+      // console.log(this.responseText);
+
+      // Response text is a string at first, we need to first parse it
+      const customer = JSON.parse(this.responseText);
+      
+      const output = `
+      <ul>
+        <li>ID: ${customer.id}</li>
+        <li>Name: ${customer.name}</li>
+        <li>Company: ${customer.company}</li>
+        <li>Phone: ${customer.phone}</li>
+      </ul>
+      `
+      document.getElementById('customer').innerHTML =  output;
+    }
   }
 
-  // Older Sytax
-
-  // xhr.onreadystatechange = function() {
-  //   console.log("READYSTATE", xhr.readyState);
-  //   if(this.status === 200 && this.readyState === 4) {
-  //       console.log(this.responseText);
-  //     }
-  //   }
-
-  // On Error
-  xhr.onerror = function() {
-    console.log('Request Error');
-  }
-
-  // Open
-  xhr.open('GET', 'data.txt', true);
-
-  // Send request
   xhr.send();
-
 }
+
+// Load Customers
+
+function loadCustomers(e) {
+  const xhr = new XMLHttpRequest();
+
+  // true stand for asynchronous
+  xhr.open('GET', 'customers.json', true);
+
+  xhr.onload = function() {
+    if(this.status === 200) {
+      // console.log(this.responseText);
+
+      // Response text is a string at first, we need to first parse it
+      const customers = JSON.parse(this.responseText);
+
+      let  output = "";
+      
+      customers.forEach(function(customer) {
+         output += `
+          <ul>
+            <li>ID: ${customer.id}</li>
+            <li>Name: ${customer.name}</li>
+            <li>Company: ${customer.company}</li>
+            <li>Phone: ${customer.phone}</li>
+          </ul>
+          `;
+      });
+
+      document.getElementById('customers').innerHTML =  output;
+       
+    } 
+  }
+
+   xhr.send();
+  }
