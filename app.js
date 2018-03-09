@@ -1,70 +1,24 @@
-document.getElementById('button1').addEventListener('click', loadCustomer);
+const posts = [
+  {title: 'Post One', body: 'This is post one'},
+  {title: 'Post Two', body: 'This is post two'}
+];
 
-document.getElementById('button2').addEventListener('click', loadCustomers);
-
-// ************************************************************************************** //
-
-
-function loadCustomer(e) {
-  const xhr = new XMLHttpRequest();
-
-  // true stand for asynchronous
-  xhr.open('GET', 'customer.json', true);
-
-  xhr.onload = function() {
-    if(this.status === 200) {
-      // console.log(this.responseText);
-
-      // Response text is a string at first, we need to first parse it
-      const customer = JSON.parse(this.responseText);
-      
-      const output = `
-      <ul>
-        <li>ID: ${customer.id}</li>
-        <li>Name: ${customer.name}</li>
-        <li>Company: ${customer.company}</li>
-        <li>Phone: ${customer.phone}</li>
-      </ul>
-      `
-      document.getElementById('customer').innerHTML =  output;
-    }
-  }
-
-  xhr.send();
+function createPost(post) {
+  setTimeout(function() {
+    posts.push(post);
+  }, 2000);
 }
 
-// Load Customers
+function getPosts() {
+  setTimeout(function() {
+    let output = '';
+    posts.forEach(function(post){
+      output += `<li>${post.title}</li>`;
+    });
+    document.body.innerHTML = output;
+  }, 1000);
+}
 
-function loadCustomers(e) {
-  const xhr = new XMLHttpRequest();
+createPost({title: 'Post Three', body: 'This is post three'});
 
-  // true stand for asynchronous
-  xhr.open('GET', 'customers.json', true);
-
-  xhr.onload = function() {
-    if(this.status === 200) {
-      // console.log(this.responseText);
-
-      // Response text is a string at first, we need to first parse it
-      const customers = JSON.parse(this.responseText);
-
-      let  output = "";
-      
-      customers.forEach(function(customer) {
-         output += `
-          <ul>
-            <li>ID: ${customer.id}</li>
-            <li>Name: ${customer.name}</li>
-            <li>Company: ${customer.company}</li>
-            <li>Phone: ${customer.phone}</li>
-          </ul>
-          `;
-      });
-
-      document.getElementById('customers').innerHTML =  output;
-       
-    } 
-  }
-
-   xhr.send();
-  }
+getPosts();
