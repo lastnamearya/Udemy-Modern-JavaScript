@@ -1,34 +1,23 @@
-// Sub classes: Inheritance in ES6 Classes
-class Person {
-  constructor(firstName, lastName) {
-    this.firstName = firstName;
-    this.lastName = lastName;
+document.getElementById('button').addEventListener('click', loadData);
+
+function loadData() {
+
+  // Create an XHR Object
+  const xhr = new XMLHttpRequest();
+
+  // Create the callback
+
+  // onload is pretty new, before that we do onreadystatechange, then we check to make sure that readystate is at 4, now it will check to the readystate that must be equal to 4
+  xhr.onload = function() {
+   if(this.status === 200) {
+    console.log(this.responseText);
+   } 
   }
 
-  greeting() {
-    return `Hello there ${this.firstName} ${this.lastName}`;
-  }
-}
+  // Open
+  xhr.open('GET', 'data.txt', true);
 
-class Customer extends Person {
-   constructor(firstName, lastName, phone, membership) {
-     // In React.js it's widely used, it calls the parent class constructor
-     super(firstName, lastName);
-
-      this.phone = phone;
-      this.membership = membership;
-   }
-
-   // We can also create class specific method in the extneded sub-class
-   static getMembershipCost() {
-     return 500;
-   }
+  // Send request
+  xhr.send();
 
 }
-
-const john = new Customer('John', 'Doe', '555-555-555', 'Standard');
-
-console.log(john);
-console.log(john.greeting());
-
-console.log(Customer.getMembershipCost());
