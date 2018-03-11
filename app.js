@@ -9,13 +9,21 @@
 
 // console.log(sayHello());
 
-// Parameters
+// // Parameters
 
-// // Single Parameters, even don't need parenthesis
-const sayHello = name => console.log(`Hello ${name}`);
+// // // Single Parameters, even don't need parenthesis
+// const sayHello = name => console.log(`Hello ${name}`);
 
-// More than one Parameters
-const sayHello2 = (firstName, lastName) => console.log(`Hello ${firstName} ${lastName}`);
+// // More than one Parameters
+// const sayHello2 = (firstName, lastName) => console.log(`Hello ${firstName} ${lastName}`);
 
-sayHello('Jigyasu');
-sayHello2('Jigyasu', 'Arya');
+// sayHello('Jigyasu');
+// sayHello2('Jigyasu', 'Arya');
+
+// Arrow functions in callback
+
+const users = ['Nathan', 'John', 'Willian'];
+
+const nameLengths = users.map(name => name.length);
+
+console.log(nameLengths);
