@@ -1,6 +1,8 @@
-// One line function doesn't need braces
-const sayHello = () => console.log('hello');
+// // One line function doesn't need braces
+// const sayHello = () => console.log('hello');
+
+// Don't need return keyword in single line function
+const sayHello = () => 'Hello';
 
 
-
-sayHello();
+console.log(sayHello());
