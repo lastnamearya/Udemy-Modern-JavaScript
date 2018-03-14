@@ -1,54 +1,32 @@
 let re;
 
-// It's a regular Expression that can be identified by 2 forward slashes and hello is the body of the regular expression.
+// Literal Characters
+re = /hello/;
+re = /hello/i;
 
-re = /hello/i;    // i = case insensitive
-// re = /hello/g;    // g = Global search
+// Metacharacter Symbols
+re = /^h/i;       // Must Starts with
+re = /world$/i;       // Must Ends with
+re = /^hello$/i;      // Must begin and end with
+re = /h.llo/i;      // Matches any ONE Character
+re = /h*llo/i;      // Matches any character 0 or more times
+re = /gre?a?y/i;    // Matches optional character
+re = /gre?a?y\?/i;
 
-// console.log(re);
-// console.log(re.source);
 
-// // exec() - Return result in an array if it found the match or it'll return null if it not able to found the match
+// String to Match
+const str = 'Grar?';
 
-// const result = re.exec('hello world');
+// Log Results
+const result = re.exec(str);
+console.log(result);
 
-// console.log(result);
+function reTest(re, str) {
+  if(re.test(str)) {
+    console.log(`${str} matches ${re.source}`);
+  } else {
+    console.log(`${str} does NOT match ${re.source}`);
+  }
+}
 
-// // We can find sub-values of the result 
-
-// console.log(result[0]);
-// console.log(result.index);
-// // search string
-// console.log(result.input);
-
-// ******************************************************************************** //
-
-// test() - Returns true or false
-// const result = re.test('hello');
-
-// console.log(result);
-
-// ******************************************************************************** //
-
-// match() - Returns result array or null
-// const str = 'Hello There';
-
-// // match() will work opposite like other regular expression methods work
-// const result = str.match(re);
-
-// // It'll give us inital expression that it matches
-// console.log(result); 
-
-// ******************************************************************************** //
-
-// search() - Returns index of the first match if not found returns - 1
-// const str = "Brad Hello There";
-// const result = str.search(re);
-// console.log(result);
-
-// ******************************************************************************** //
-
-// replace() - Return new string with some or all matches of a pattern or old string
-const str = 'there';
-const newStr = str.replace(re, 'Hi');
-console.log(newStr);
+reTest(re, str);
