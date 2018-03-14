@@ -13,9 +13,17 @@ re = /h*llo/i;      // Matches any character 0 or more times
 re = /gre?a?y/i;    // Matches optional character
 re = /gre?a?y\?/i;
 
+// Brackets [] - Character Sets
+re = /gr[ae]y/i;      // Must be an a or e
+re = /[GF]ray/;       // Must be G or F
+re = /[^GF]ray/;      // Must not be G or F
+re = /[A-Z]ray/;      // Match any uppercase character
+re = /[A-Za-z]ray/;   // Match any character
+re = /[0-9]ray/;      // 
+
 
 // String to Match
-const str = 'Grar?';
+const str = '10ray';
 
 // Log Results
 const result = re.exec(str);
