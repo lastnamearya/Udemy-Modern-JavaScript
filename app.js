@@ -26,8 +26,11 @@ re = /Hel{2}o/i;      // Must occur exactly {m} amount of times
 re = /Hel{2,4}o/i;     // Must be in range of 2 - 4
 re = /hel{2,}o/i;      // Must be atleast 2 Times
 
+// Parenthesis Grouping
+re = /^([0-9]x){3}/i;
+
 // String to Match
-const str = 'Hello';
+const str = '3x4x3x';
 
 // Log Results
 const result = re.exec(str);
