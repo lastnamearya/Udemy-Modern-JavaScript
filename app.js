@@ -21,9 +21,13 @@ re = /[A-Z]ray/;      // Match any uppercase character
 re = /[A-Za-z]ray/;   // Match any character
 re = /[0-9]ray/;      // 
 
+// Braces {} - Quantifiers
+re = /Hel{2}o/i;      // Must occur exactly {m} amount of times
+re = /Hel{2,4}o/i;     // Must be in range of 2 - 4
+re = /hel{2,}o/i;      // Must be atleast 2 Times
 
 // String to Match
-const str = '10ray';
+const str = 'Hello';
 
 // Log Results
 const result = re.exec(str);
