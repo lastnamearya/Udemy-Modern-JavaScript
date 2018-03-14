@@ -1,3 +1,5 @@
+const user = {email: 'jdoe@gmail.com'};
+
 try {
   // Produce a Reference Error
   // myFunction();
@@ -9,10 +11,14 @@ try {
   // console.log(eval('Hello World'));
 
   // Will produce a URIError
-  decodeURIComponent('%');
+  // decodeURIComponent('%');
+
+  if(!user.name) {
+    throw 'User has no name';
+  }
 
 } catch(e) {
-  console.log(`${e.name}: ITS NULL STUPID!!`);
+  console.log(e);
   // console.log(e.message);
   // console.log(e.name);
   // console.log(e instanceof ReferenceError);
