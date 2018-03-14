@@ -29,6 +29,19 @@ re = /hel{2,}o/i;      // Must be atleast 2 Times
 // Parenthesis Grouping
 re = /^([0-9]x){3}/i;
 
+// Shorthand Character Classes
+re = /\w/;      // Word Character - alphanumric or _    First Character
+re = /\w+/;      // Word Character - alphanumric or _   With + all the characters
+re = /\W/;      // opposite of small W
+re = /\d/;      // Must be Digit
+re = /\d+/;     // More than once, must be digit.
+re = /\D/;      // Match any Non-digit;
+re = /\s/;      // Match whitespace
+re = /\S/;      // Non-whitespace
+re = /Hell\b/;  // Word boundary
+
+
+
 // String to Match
 const str = '3x4x3x';
 
