@@ -40,10 +40,13 @@ re = /\s/;      // Match whitespace
 re = /\S/;      // Non-whitespace
 re = /Hell\b/;  // Word boundary
 
+// Assertions
+re = /x(?=y)/;
+re = /x(?!y)/;
 
 
 // String to Match
-const str = '3x4x3x';
+const str = 'dkjekdxsfsdfx';
 
 // Log Results
 const result = re.exec(str);
