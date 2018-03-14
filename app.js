@@ -6,7 +6,10 @@ try {
   // null.myFunction();
 
   // Will produce Syntax Error
-  console.log(eval('Hello World'));
+  // console.log(eval('Hello World'));
+
+  // Will produce a URIError
+  decodeURIComponent('%');
 
 } catch(e) {
   console.log(`${e.name}: ITS NULL STUPID!!`);
