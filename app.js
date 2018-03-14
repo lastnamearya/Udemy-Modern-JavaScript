@@ -1,31 +1,14 @@
-const user = {email: 'jdoe@gmail.com'};
+let re;
 
-try {
-  // Produce a Reference Error
-  // myFunction();
+// It's a regular Expression that can be identified by 2 forward slashes and hello is the body of the regular expression.
 
-  // Produce a TypeError
-  // null.myFunction();
+re = /hello/;
 
-  // Will produce Syntax Error
-  // console.log(eval('Hello World'));
+console.log(re);
+console.log(re.source);
 
-  // Will produce a URIError
-  // decodeURIComponent('%');
+// exec() - Return result in an array if it found the match or it'll return null if it not able to found the match
 
-  if(!user.name) {
-    // throw 'User has no name';
-    // It'll throw SyntaxError 
-    throw new SyntaxError('User has no name');
-  }
+const result = re.exec('brad hello world');
 
-} catch(e) {
-  console.log(`User Error: ${e.message}`);
-  // console.log(e.message);
-  // console.log(e.name);
-  // console.log(e instanceof ReferenceError);
-} finally {
-  console.log('Finally runs regardless of results....');
-}
-
-console.log('Program continues....');
+console.log(result);
