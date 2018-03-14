@@ -3,7 +3,10 @@ try {
   // myFunction();
 
   // Produce a TypeError
-  null.myFunction();
+  // null.myFunction();
+
+  // Will produce Syntax Error
+  console.log(eval('Hello World'));
 
 } catch(e) {
   console.log(`${e.name}: ITS NULL STUPID!!`);
