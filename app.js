@@ -31,10 +31,18 @@ re = /hello/i;    // i = case insensitive
 // ******************************************************************************** //
 
 // match() - Returns result array or null
-const str = 'Hello There';
+// const str = 'Hello There';
 
-// match() will work opposite like other regular expression methods work
-const result = str.match(re);
+// // match() will work opposite like other regular expression methods work
+// const result = str.match(re);
 
-// It'll give us inital expression that it matches
-console.log(result); 
+// // It'll give us inital expression that it matches
+// console.log(result); 
+
+// ******************************************************************************** //
+
+
+// search() - Returns index of the first match if not found returns - 1
+const str = "Brad Hello There";
+const result = str.search(re);
+console.log(result);
