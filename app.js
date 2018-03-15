@@ -1,40 +1,56 @@
-// // Create a Symbol
-// const sym1 = Symbol();
-// const sym2 = Symbol();
+// Maps = Key-value Pairs - can use ANY type as key or value
 
-// // No two symbols can be compared, they're not equal
-// console.log(Symbol('123') === Symbol('123'));
+const map1 = new Map();
 
-// // Symbol Data not automatically convert into string data type in concatenation / backstash
-// // Throw error on concatenation
-// // console.log(`Hello ${sym1}`);
+// Set some keys
 
-// // We've to convert them especially
-// console.log(`Hello ${String(sym1)}`);
+const key1 = "Some string",
+      key2 = {},
+      key3 = function() {};
 
-// // We can also using .toString()
-// console.log(`Hello ${sym1.toString()}`);
+// Set map values by key
+map1.set(key1, 'Value of key1');
+map1.set(key2, 'Value of key2');
+map1.set(key3, 'Value of key3');
 
-// Unique Object Keys
-const KEY1 = Symbol();
-const KEY2 = Symbol('sym2');
+// Get Values by key
+console.log(map1.get(key1), map1.get(key2), map1.get(key3));
 
-const myObj = {};
+// Count values
+console.log(map1.size);
 
-// We can't pass a varialbe using dot notation as a property, instead it's better to us bracket notation over dot notation for passing an variable to store as a prop in an object
-myObj[KEY1] = 'Prop1';
-myObj[KEY2] = 'Prop2';
-myObj.key3 = 'Prop3';
-myObj.key4 = 'Prop4';
+// Iterating through Maps
 
-console.log(myObj[KEY1]);
-console.log(myObj[KEY2]);
-
-// Symbols are not enumerable in for...in
-for(let i in myObj) {
-  console.log(`${i}: ${myObj[i]}`);
+// Loop using for...of to get keys and values
+for(let [key, value] of map1) {
+  console.log(`${key} = ${value}`);
 }
 
-// Symbols are ignored by JSON.stringify
-console.log(JSON.stringify({key: 'prop'}));
-console.log(JSON.stringify({[Symbol('sym1')]: 'prop'}));
+// Iterating only through the Keys
+for(let key of map1.keys()) {
+  console.log(key);
+}
+
+// Iterating only through the values
+for(let value of map1.values()) {
+  console.log(value);
+}
+
+// Loop with forEach
+map1.forEach(function(value, key) {
+  console.log(`${key} = ${value}`);
+});
+
+// Convert to Arrays
+
+// Create an array of key value pairs
+const keyValArr = Array.from(map1);
+console.log(keyValArr);
+
+// Create an array of just values from map
+const valArr = Array.from(map1.values());
+console.log(valArr);
+
+// Create an array of just values from map
+const keyArr = Array.from(map1.keys());
+console.log(keyArr);
