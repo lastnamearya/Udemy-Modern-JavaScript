@@ -1,27 +1,52 @@
-// Singelton Pattern
-const Singelton = (function() {
-  let instance;
+// Factory Pattern
+function MemberFactory() {
+  this.createMember = function(name, type) {
 
-  function createInstance() {
-    const object = new Object({name: "Brad"});
-    return object;
-  }
+    let member;
 
-  return {
-    getInstance: function() {
-      if(!instance) {
-        instance = createInstance();
-      }
-      return instance;
+    if(type === 'simple') {
+      member = new SimpleMembership(name);
+    } else if (type === 'standard') {
+      member = new StandardMembership(name);
+    } else if (type === "super") {
+      member = new SuperMembership(name);
     }
-  }
-})();
 
-const instanceA = Singelton.getInstance();
-const instanceB = Singelton.getInstance();
+    member.type = type;
 
-console.log(instanceA);
-console.log(instanceB);
+    member.define = function() {
+      console.log(`${this.name} (${this.type}): ${this.cost}`);
+    }
 
-// We'll get true when we compare both instances. Why single instance is created because we use return statement and due to that after instancing one object our function stopped.
-console.log(instanceA === instanceB);
+    return member;
+  }  
+}
+
+const SimpleMembership = function(name) {
+  this.name = name;
+  this.cost = '$5';
+}
+
+const StandardMembership = function(name) {
+  this.name = name;
+  this.cost = '$15';
+}
+
+const SuperMembership = function(name) {
+  this.name = name;
+  this.cost = '$25';
+}
+
+const members = [];
+const factory = new MemberFactory();
+
+members.push(factory.createMember('John Doe', 'simple'));
+members.push(factory.createMember('Chris Jackson', 'super'));
+members.push(factory.createMember('Janice Williams', 'simple'));
+members.push(factory.createMember('Tom Smith', 'standard'));
+
+console.log(members);
+
+members.forEach(function(member) {
+  member.define();
+});
