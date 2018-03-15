@@ -1,57 +1,40 @@
-// Iterator Example
-// function nameIterator(names) {
-//   let nextIndex = 0;
+// // Create a Symbol
+// const sym1 = Symbol();
+// const sym2 = Symbol();
 
-//   return {
-//     next: function() {
-//       return nextIndex < names.length ?
-//       { value: names[nextIndex++], done: false } :
-//       { done: true }
-//     }
-//   }
-// }
+// // No two symbols can be compared, they're not equal
+// console.log(Symbol('123') === Symbol('123'));
 
-// // Create an array of names
-// const namesArr = ['Jack', 'Jill', 'John'];
+// // Symbol Data not automatically convert into string data type in concatenation / backstash
+// // Throw error on concatenation
+// // console.log(`Hello ${sym1}`);
 
-// // Init iterator and pass in the names array
-// const names = nameIterator(namesArr);
+// // We've to convert them especially
+// console.log(`Hello ${String(sym1)}`);
 
-// console.log(names.next().value);
-// console.log(names.next().value);
-// console.log(names.next().value);
-// console.log(names.next());
+// // We can also using .toString()
+// console.log(`Hello ${sym1.toString()}`);
 
-// **************************************************************************************************** //
+// Unique Object Keys
+const KEY1 = Symbol();
+const KEY2 = Symbol('sym2');
 
-// Generator Example
-function* sayNames() {
-  yield 'Jack';
-  yield 'Jill';
-  yield 'John';
+const myObj = {};
+
+// We can't pass a varialbe using dot notation as a property, instead it's better to us bracket notation over dot notation for passing an variable to store as a prop in an object
+myObj[KEY1] = 'Prop1';
+myObj[KEY2] = 'Prop2';
+myObj.key3 = 'Prop3';
+myObj.key4 = 'Prop4';
+
+console.log(myObj[KEY1]);
+console.log(myObj[KEY2]);
+
+// Symbols are not enumerable in for...in
+for(let i in myObj) {
+  console.log(`${i}: ${myObj[i]}`);
 }
 
-const name = sayNames();
-
-console.log(name.next().value);
-console.log(name.next().value);
-console.log(name.next().value);
-console.log(name.next());
-
-// ID Creator
-function* createIds() {
-  let index = 1;
-
-  while(true) {
-    yield index++;
-  }
-}
-
-const gen = createIds();
-
-console.log(gen.next().value);
-console.log(gen.next().value);
-console.log(gen.next().value);
-console.log(gen.next().value);
-console.log(gen.next().value);
-console.log(gen.next().value);
+// Symbols are ignored by JSON.stringify
+console.log(JSON.stringify({key: 'prop'}));
+console.log(JSON.stringify({[Symbol('sym1')]: 'prop'}));
