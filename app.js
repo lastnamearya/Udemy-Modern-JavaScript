@@ -1,61 +1,27 @@
-// // Basic Structure
+// Singelton Pattern
+const Singelton = (function() {
+  let instance;
 
-// (function() {
-//   // Declare Private vars and functions 
-
-//   return {
-//     // Declare Public Varaibles and Functions
-
-//   }
-// })();
-
-// // STANDARD MODULE PATTERN
-// const UICtrl = (function() {
-//   let text = 'Hello World';
-
-//   const changeText = function() {
-//     const element = document.querySelector('h1');
-//     element.textContent = text;
-//   }
-
-//   return {
-//     callChangeText: function() {
-//       changeText();
-//       console.log(text);
-//     }
-//   }
-// })();
-
-// UICtrl.callChangeText();
-
-// // Can't access Private Data ~ functions
-// UICtrl.changeText();
-
-// // Can't access Private Data ~ Variables 
-// console.log(UICtrl.text);
-
-// ************************************************************************************************ //
-
-// Revealing Module Pattern
-const ItemCtrl = (function() {
-  // This can be thought as our State
-  let data = [];
-
-  function add(item) {
-    data.push(item);
-    console.log('Item Added...');
-  }
-
-  function get(id) {
-    return data.find(item => {
-      return item.id === id;
-    })
+  function createInstance() {
+    const object = new Object({name: "Brad"});
+    return object;
   }
 
   return {
-    add: add,
-    get: get
+    getInstance: function() {
+      if(!instance) {
+        instance = createInstance();
+      }
+      return instance;
+    }
   }
 })();
 
-ItemCtrl.add({id: 1, name: 'John'});
+const instanceA = Singelton.getInstance();
+const instanceB = Singelton.getInstance();
+
+console.log(instanceA);
+console.log(instanceB);
+
+// We'll get true when we compare both instances. Why single instance is created because we use return statement and due to that after instancing one object our function stopped.
+console.log(instanceA === instanceB);
